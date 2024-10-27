@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category.name }}</title>
+</head>
+<body>
+<h1>Картинки: {{ category.name }}</h1>
+<ul>
+    {% for picture in pictures %}
+        <li>
+            <img src="{{ picture.image.url }}" alt="{{ picture.title }}" width="300">
+            <p>{{ picture.title }}</p>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'index' %}">Повернутися до меню</a>
+</body>
+</html>>
