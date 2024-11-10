@@ -25,11 +25,11 @@ from gallery import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("gallery.urls")),
-    path("gallery/", views.picture, name="picture"),  # Нова URL для сторінки Picture
+    # path("gallery/", views.picture, name="picture"),  # Нова URL для сторінки Picture
     path(
         "category/<int:category_id>/", views.category_pictures, name="category_pictures"
     ),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

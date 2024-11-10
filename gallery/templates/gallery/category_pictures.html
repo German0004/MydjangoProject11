@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+{% load crispy_forms_tags %}
 <html>
 <head>
     <title>{{ category.name }}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column align-items-start w-100">
 <h1>Картинки: {{ category.name }}</h1>
 <ul>
     {% for picture in pictures %}
@@ -13,6 +15,14 @@
         </li>
     {% endfor %}
 </ul>
+<div class="container p-0 m-1">
+    <h1>Завантажити картинку</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}  <!-- Відображаємо форму -->
+        <button type="submit" class="btn btn-primary">Завантажити</button>
+    </form>
+</div>
 <a href="{% url 'index' %}">Повернутися до меню</a>
 </body>
 </html>>

@@ -13,7 +13,13 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
-from django.forms.forms.BaseForm import media
+# import media
+# from dotenv import load_dotenv
+from django.conf import settings
+
+
+# from django.forms.forms.BaseForm import media
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,7 +47,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "gallery",
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

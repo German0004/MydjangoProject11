@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div class="row">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}">My Gallery</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'gallery:gallery' %}">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'gallery:nature' %}">Nature</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'gallery:cars' %}">Cars</a>
+                        </li>
+
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <form method="post" action="{% url 'logout' %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="nav-link btn btn-link p-0">Logout</button>
+                                </form>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'user:profile' %}">My Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <p class="nav-link"><strong>Hello, {{ user.username }}!</strong></p>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'user:register' %}">Sign Up</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</head>
+<body>
+
+</body>
+</html>
