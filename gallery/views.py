@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django import forms
 from .models import Picture
 from .forms import PictureForm
+from django.shortcuts import get_object_or_404, redirect
+
 
 
 # def upload_picture(request):
@@ -64,3 +66,14 @@ def index(request):
 #         "gallery/category_pictures.html",
 #         {"category": category, "pictures": pictures},
 #     )
+def delete_picture(request, picture_id):
+    # Отримуємо картинку за ID або повертаємо помилку 404, якщо такої немає
+    picture = get_object_or_404(Picture, id=picture_id)
+
+    # Перевіряємо, чи це POST-запит для підтвердження видалення
+    if request.method == 'POST':
+        picture.delete()  # Видаляємо картинку з бази даних
+        return redirect('{{ picture.image.url }}')  # Переадресовуємо користувача після видалення
+
+    # Повертаємо іншу відповідь, якщо запит не є POST
+    return redirect('{{ picture.image.url }}')

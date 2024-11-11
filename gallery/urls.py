@@ -9,4 +9,5 @@ urlpatterns = [
     path(
         "category/<int:category_id>/", views.category_pictures, name="category_pictures"
     ),
+    # path('delete_picture/<int:picture_id>/', views.delete_picture, name='delete_picture'),
 ]

@@ -29,6 +29,7 @@ urlpatterns = [
     path(
         "category/<int:category_id>/", views.category_pictures, name="category_pictures"
     ),
+    path('delete_picture/<int:picture_id>/', views.delete_picture, name='delete_picture'),
 ]
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
